@@ -1,14 +1,14 @@
 <template>
   <div>
-    <pass-recovery-form></pass-recovery-form>
+    <accounts-component :page="'pass-recovery'"></accounts-component>
   </div>
 </template>
 <script>
-import passRecoveryForm from '@/components/accounts/PassRecoveryForm'
+import accountsComponent from '@/components/accounts/AccountsComponent'
 
 export default {
   components: {
-    passRecoveryForm
+    accountsComponent
   }
 }
 </script>

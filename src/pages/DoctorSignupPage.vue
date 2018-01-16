@@ -1,14 +1,14 @@
 <template>
   <div>
-    <doctor-signup-form></doctor-signup-form>
+    <accounts-component :page="'doctor-signup'"></accounts-component>
   </div>
 </template>
 <script>
-import doctorSignupForm from '@/components/accounts/DoctorSignupForm'
+import accountsComponent from '@/components/accounts/AccountsComponent'
 
 export default {
   components: {
-    doctorSignupForm
+    accountsComponent
   }
 }
 </script>

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <login-register-form :page="'login'"></login-register-form>
+    <accounts-component :page="'login'"></accounts-component>
   </div>
 </template>
 <script>
-import loginRegisterForm from '@/components/accounts/LoginRegisterForm'
+import accountsComponent from '@/components/accounts/AccountsComponent'
 
 export default {
   components: {
-    loginRegisterForm
+    accountsComponent
   }
 }
 </script>
