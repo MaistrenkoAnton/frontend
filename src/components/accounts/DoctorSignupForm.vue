@@ -61,32 +61,6 @@
   </div>
 </template>
 
-<!--<script>-->
-//  export default {
-//    methods: {
-//      init (event) {
-//        var value = event.target.value
-//        this.value = ''
-//        this.value = value
-//        console.log('value', value, 'this.value', this.value)
-//        return value
-//      },
-//      focusFix (target) {
-//        console.log('target', target)
-//        var value = event.target.value
-//        var placeholder = target.placeholder
-//        target.placeholder = ''
-//        target.value = ''
-//        console.log('target.value', target.value, 'value', value)
-//        setTimeout(function () {
-//          target.value = value
-//          target.placeholder = placeholder
-//        }, 0)
-//        return value
-//      }
-//    }
-//  }
-<!--</script>-->
 <script>
 export default {
   data () {
