@@ -5,7 +5,7 @@
         <div class="col-md-4 col-md-offset-4">
           <div class="my-account style-2 margin-bottom-40">
             <div class="logo-wrapper text-center">
-              <router-link :to="{name: 'home'}"><img src="/static/images/HealthRay.svg" alt="HealthRay" class="logo"></router-link>
+              <router-link :to="{name: 'home'}"><svgicon class="logo" icon="HealthRay" width="169" height="39"></svgicon></router-link>
             </div>
             <ul class="tabs-nav" v-if="page == 'login' || page == 'register'">
               <li v-bind:class="{'active': page == 'login'}"><router-link :to="{name: 'login'}"><h4>Log In</h4></router-link></li>
@@ -33,6 +33,7 @@ import loginForm from '@/components/accounts/LoginForm'
 import registerForm from '@/components/accounts/RegisterForm'
 import passRecoveryForm from '@/components/accounts/PassRecoveryForm'
 import doctorSignupForm from '@/components/accounts/DoctorSignupForm'
+import '@/compiled-icons/HealthRay'
 
 export default {
   components: {
