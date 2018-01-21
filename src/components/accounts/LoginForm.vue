@@ -4,8 +4,8 @@
 
       <p class="form-row form-row-wide">
         <label for="loginPhone">
+          <country-phone-input :phone="phone"></country-phone-input>
           <i class="fa fa-mobile"></i>
-          <input type="text" class="input-text" v-model="phone" placeholder="Phone" id="loginPhone" v-focus>
         </label>
       </p>
 
@@ -29,10 +29,17 @@
 </template>
 
 <script>
+import CountryPhoneInput from '@/components/extended/CountryPhoneInput'
 export default {
+  components: {
+    CountryPhoneInput
+  },
   data () {
     return {
-      phone: '+91-'
+      phone: {
+        code: '',
+        number: ''
+      }
     }
   }
 }
