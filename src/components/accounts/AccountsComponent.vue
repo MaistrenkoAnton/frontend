@@ -47,3 +47,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .logo {
+    margin-bottom: 11px;
+  }
+</style>
