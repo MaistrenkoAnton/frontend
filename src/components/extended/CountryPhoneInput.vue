@@ -55,7 +55,6 @@
     },
     watch: {
       'intlData.dialCode': function (val) {
-        console.log('test')
         this.phone.number = `+${val}-`
       }
     }
