@@ -37,9 +37,7 @@
       v-focus
       autocomplete="off"
       v-bind:name="name"
-      v-on:input="handleChangePhoneNumber"
-      v-bind:value="`${phone.number}`"
-      @keyup="changeCountry"
+      v-model="phone.number"
       v-bind:placeholder="'Phone'"
     />
   </div>
@@ -54,6 +52,12 @@
     },
     props: {
       defaultCode: {type: String, default: 'in'}
+    },
+    watch: {
+      'intlData.dialCode': function (val) {
+        console.log('test')
+        this.phone.number = `+${val}-`
+      }
     }
   }
 </script>
@@ -61,10 +65,10 @@
 <style scoped>
   .intl-phone-input.allow-dropdown input.input-text {
     height: 53px;
+    padding-left: 45px;
     line-height: 1em;
     transition: box-shadow 0.2s;
     text-transform: none;
-    padding: 0 20px 0 75px;
     outline: none;
     font-size: 15px;
     margin-top: 8px !important;
@@ -86,7 +90,12 @@
     width:100%;
   }
   div.flag-container {
-    margin-left: 30px;
     top: 8px;
+  }
+  >>> div.iti-flag {
+    left: 12px;
+  }
+  >>> div.iti-arrow {
+    left: 35px;
   }
 </style>

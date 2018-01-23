@@ -5,7 +5,6 @@
       <p class="form-row form-row-wide">
           <label for="registerPhone">
             <country-phone-input :phone="phone"></country-phone-input>
-            <i class="fa fa-mobile"></i>
           </label>
         </p>
 
