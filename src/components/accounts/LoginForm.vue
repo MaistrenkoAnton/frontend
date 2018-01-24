@@ -3,7 +3,7 @@
     <form class="login">
 
       <p class="form-row form-row-wide">
-        <label for="loginPhone">
+        <label for="phone">
           <country-phone-input :phone="phone"></country-phone-input>
         </label>
       </p>

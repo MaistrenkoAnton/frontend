@@ -4,10 +4,10 @@
 
       <div class="selected-flag">
         <div v-bind:class="`iti-flag ${countryCode}`"></div>
-        <div v-bind:class="`iti-arrow${isVisiblePanel ? ' up' : ''}`"></div>
+        <div v-bind:class="`iti-arrow${isVisiblePanel && editable ? ' up' : ''}`"></div>
       </div>
 
-      <ul class="country-list" v-if="isVisiblePanel">
+      <ul class="country-list" v-if="isVisiblePanel && editable">
         <li
           v-for="item in itemsData.frontItems"
           v-bind:class="`country${item.code === countryCode ? ' highlight' : ''}`"
@@ -32,13 +32,13 @@
       </ul>
     </div>
     <input type="text"
+      id="phone"
+      v-on:input="handleChangePhoneNumber"
       class="input-text"
-      placeholder="Phone"
       v-focus
       autocomplete="off"
       v-bind:name="name"
       v-model="phone.number"
-      v-bind:placeholder="'Phone'"
     />
   </div>
 </template>
@@ -49,13 +49,26 @@
     extends: PhoneInput,
     mounted () {
       this.setCode(this.defaultCode)
-    },
-    props: {
-      defaultCode: {type: String, default: 'in'}
+      this.initPhoneNumber()
     },
     watch: {
-      'intlData.dialCode': function (val) {
-        this.phone.number = `+${val}-`
+      'intlData.dialCode': function () {
+        this.initPhoneNumber()
+      }
+    },
+    props: {
+      defaultCode: {type: String, default: 'in'},
+      editable: {type: Boolean, default: false}
+    },
+    methods: {
+      handleChangePhoneNumber (event) {
+        var regex = new RegExp('^\\+' + this.intlData.dialCode + '-')
+        if (!regex.test(event.target.value)) {
+          this.initPhoneNumber()
+        }
+      },
+      initPhoneNumber () {
+        this.phone.number = `+${this.intlData.dialCode}-`
       }
     }
   }
@@ -64,7 +77,7 @@
 <style scoped>
   .intl-phone-input.allow-dropdown input.input-text {
     height: 53px;
-    padding-left: 45px;
+    padding-left: 46px;
     line-height: 1em;
     transition: box-shadow 0.2s;
     text-transform: none;
