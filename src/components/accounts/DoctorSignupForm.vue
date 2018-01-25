@@ -11,9 +11,8 @@
 
       <p class="form-row form-row-wide">
         <label for="username2">
-          <i class="fa fa-user" aria-hidden="true"></i>
-          <input type="text" class="input-text" name="username" placeholder="Full Name" id="username2"
-                 value="Dr. ">
+          <div class="doctor-prefix">Dr.</div>
+          <input type="text" class="input-text" name="username" placeholder="Full Name" id="username2">
         </label>
       </p>
 
@@ -43,3 +42,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .doctor-prefix {
+    position: absolute;
+    color: black;
+    top: 13px;
+    left: 15px;
+  }
+</style>
