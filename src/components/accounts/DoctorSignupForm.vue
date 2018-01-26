@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .doctor-prefix {
     position: absolute;
     color: black;
