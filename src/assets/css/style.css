@@ -5362,7 +5362,7 @@ body .carousel {
 /* preloading images */
 .owl-item.loading{
 	min-height: 150px;
-	background: url(AjaxLoader.gif) no-repeat center center
+	/*background: url(AjaxLoader.gif) no-repeat center center*/
 }
 
 /*
@@ -5424,7 +5424,7 @@ body .carousel {
 
 /* mouse grab icon */
 .grabbing {
-    cursor:url(grabbing.png) 8 8, move;
+    /*cursor:url(grabbing.png) 8 8, move;*/
 }
 
 /* fix */
@@ -8351,10 +8351,10 @@ body .notification strong { border: none; }
 	cursor: pointer;
 }
 
-.notification.success .close {background: url(../images/alert_boxes_close_ico.png) 0 -8px no-repeat;}
-.notification.error .close {background: url(../images/alert_boxes_close_ico.png) 0 0 no-repeat;}
-.notification.warning .close {background: url(../images/alert_boxes_close_ico.png) 0 -16px no-repeat;}
-.notification.notice .close {background: url(../images/alert_boxes_close_ico.png) 0 -24px no-repeat;}
+/*.notification.success .close {background: url(../images/alert_boxes_close_ico.png) 0 -8px no-repeat;}*/
+/*.notification.error .close {background: url(../images/alert_boxes_close_ico.png) 0 0 no-repeat;}*/
+/*.notification.warning .close {background: url(../images/alert_boxes_close_ico.png) 0 -16px no-repeat;}*/
+/*.notification.notice .close {background: url(../images/alert_boxes_close_ico.png) 0 -24px no-repeat;}*/
 
 
 .notification.notice p span i { font-weight: 500; }
