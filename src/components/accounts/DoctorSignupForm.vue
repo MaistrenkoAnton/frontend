@@ -5,17 +5,14 @@
     <form class="login">
       <p class="form-row form-row-wide">
         <label for="phone">
-          <i class="fa fa-mobile"></i>
-          <input type="text" class="input-text" name="phone" id="phone"
-                 placeholder="1-541-754-3010" v-model="phone" v-focus>
+          <country-phone-input :phone="phone"></country-phone-input>
         </label>
       </p>
 
       <p class="form-row form-row-wide">
         <label for="username2">
-          <i class="fa fa-user" aria-hidden="true"></i>
-          <input type="text" class="input-text" name="username" placeholder="Full Name" id="username2"
-                 value="Dr. ">
+          <div class="doctor-prefix">Dr.</div>
+          <input type="text" class="input-text" name="username" placeholder="Full Name" id="username2">
         </label>
       </p>
 
@@ -30,11 +27,27 @@
 </template>
 
 <script>
+import CountryPhoneInput from '@/components/extended/CountryPhoneInput'
 export default {
+  components: {
+    CountryPhoneInput
+  },
   data () {
     return {
-      phone: '+91-'
+      phone: {
+        code: '',
+        number: ''
+      }
     }
   }
 }
 </script>
+
+<style scoped>
+  .doctor-prefix {
+    position: absolute;
+    color: black;
+    top: 13px;
+    left: 15px;
+  }
+</style>
