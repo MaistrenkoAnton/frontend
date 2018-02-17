@@ -547,3 +547,24 @@ button.fc-next-button {
         padding: 5px;
     }
 }
+  div.errors {
+    text-align: left;
+    margin-top: -12px;
+    margin-left: 5px;
+    margin-right: 2px;
+    color: red;
+    font-size: 11px;
+    line-height: 13px;
+  }
+  input.danger, input.danger:focus {
+    border: 1px solid red;
+  }
+  p.non-field-error {
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    text-align: center;
+    border-radius: 3px;
+    margin-bottom: 9px;
+  }

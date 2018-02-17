@@ -3,21 +3,28 @@
     <div class="text-center"><h4>Doctor Signup</h4></div>
     </br>
     <form class="login">
+
+      <p class="non-field-error" v-if="nonFieldErrors">{{ nonFieldErrors }}</p>
+
       <p class="form-row form-row-wide">
         <label for="phone">
-          <country-phone-input :phone="phone"></country-phone-input>
+          <country-phone-input :phone="phone" :phoneErrors="phoneErrors"></country-phone-input>
         </label>
       </p>
+      <div class="errors" v-if="phoneErrors">{{ phoneErrors }}</div>
 
       <p class="form-row form-row-wide">
         <label for="username2">
           <div class="doctor-prefix">Dr.</div>
-          <input type="text" class="input-text" name="username" placeholder="Full Name" id="username2">
+          <input type="text" class="input-text" name="username" placeholder="Full Name" id="username2"
+          v-model="full_name" v-bind:class="{'danger': password1Errors}">
         </label>
       </p>
+      <div v-bind:class="{'errors': password1Errors}">{{ password1Errors }}</div>
 
       <p class="form-row">
-        <input type="submit" class="button border margin-top-10" name="login" value="Register">
+        <input type="button" class="button border margin-top-10" name="login" value="Register"
+        v-on:click="doctor_signup">
       </p>
       <p class="backto_login">
         <router-link :to="{name: 'login'}">Go Back to login page</router-link>
@@ -37,6 +44,33 @@ export default {
       phone: {
         code: '',
         number: ''
+      },
+      full_name: ''
+    }
+  },
+  methods: {
+    doctor_signup () {
+      this.$store.dispatch('CLEAR_ERRORS')
+      this.$store.dispatch('DOCTOR_SIGNUP', {phone: this.phone.number, full_name: this.full_name})
+    }
+  },
+  created () {
+    this.$store.dispatch('CLEAR_ERRORS')
+  },
+  computed: {
+    nonFieldErrors () {
+      if (this.$store.getters.getErrors && this.$store.getters.getErrors.non_field_errors) {
+        return this.$store.getters.getErrors.non_field_errors.join('\n')
+      }
+    },
+    password1Errors () {
+      if (this.$store.getters.getErrors && this.$store.getters.getErrors.password1) {
+        return this.$store.getters.getErrors.password1.join('\n')
+      }
+    },
+    phoneErrors () {
+      if (this.$store.getters.getErrors && this.$store.getters.getErrors.email) {
+        return this.$store.getters.getErrors.email.join('\n')
       }
     }
   }

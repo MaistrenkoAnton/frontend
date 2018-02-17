@@ -39,6 +39,7 @@
       autocomplete="off"
       v-bind:name="name"
       v-model="phone.number"
+      v-bind:class="{'input-danger': phoneErrors}"
     />
   </div>
 </template>
@@ -58,7 +59,8 @@
     },
     props: {
       defaultCode: {type: String, default: 'in'},
-      editable: {type: Boolean, default: false}
+      editable: {type: Boolean, default: false},
+      phoneErrors: String
     },
     methods: {
       handleChangePhoneNumber (event) {
@@ -99,6 +101,9 @@
       border-radius: 3px;
       color: black;
       box-shadow: none;
+    }
+    &.allow-dropdown input.input-danger {
+      border: 1px solid red;
     }
   }
   div.flag-container {

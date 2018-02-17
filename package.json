@@ -12,13 +12,15 @@
     "generate-icons": "vsvg -s ./svg-icons -t ./src/compiled-icons"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "connect-history-api-fallback": "^1.5.0",
     "express": "^4.16.2",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vue2-phone-input": "^1.1.1"
+    "vue2-phone-input": "^1.1.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
