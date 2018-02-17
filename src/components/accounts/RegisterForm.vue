@@ -15,10 +15,9 @@
         <label for="username2">
           <i class="fa fa-user" aria-hidden="true"></i>
           <input type="text" class="input-text" name="username" placeholder="Full Name"
-                 id="username2" v-model="full_name" v-bind:class="{'danger': password1Errors}">
+                 id="username2" v-model="full_name">
         </label>
       </p>
-      <div v-bind:class="{'errors': password1Errors}">{{ password1Errors }}</div>
 
       <p class="form-row">
         <input type="button" class="button border fw margin-top-10" name="register" value="Register"
@@ -51,7 +50,13 @@ export default {
   methods: {
     register () {
       this.$store.dispatch('CLEAR_ERRORS')
-      this.$store.dispatch('REGISTER', {phone: this.phone.number, full_name: this.full_name})
+      this.$store.dispatch('REGISTER', {phone: this.phone.number, first_name: this.getFirstName(), last_name: this.getLastName()})
+    },
+    getFirstName () {
+      return this.full_name.split(' ')[0]
+    },
+    getLastName () {
+      return this.full_name.split(' ')[1]
     }
   },
   created () {
@@ -63,14 +68,9 @@ export default {
         return this.$store.getters.getErrors.non_field_errors.join('\n')
       }
     },
-    password1Errors () {
-      if (this.$store.getters.getErrors && this.$store.getters.getErrors.password1) {
-        return this.$store.getters.getErrors.password1.join('\n')
-      }
-    },
     phoneErrors () {
-      if (this.$store.getters.getErrors && this.$store.getters.getErrors.email) {
-        return this.$store.getters.getErrors.email.join('\n')
+      if (this.$store.getters.getErrors && this.$store.getters.getErrors.mobile_phone) {
+        return this.$store.getters.getErrors.mobile_phone.join('\n')
       }
     }
   }

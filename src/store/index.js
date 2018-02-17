@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from '../router/index.js'
 
 Vue.use(Vuex)
 
@@ -19,22 +20,24 @@ const store = new Vuex.Store({
         password: data.password
       }, { headers: { 'Content-Type': 'application/json' } }
       ).then((response) => {
-        console.log('response', response)
         store.commit('success', response)
-        localStorage.setItem('token', response.token)
+        localStorage.setItem('token', response.data.token)
       }).catch((err) => {
-        console.log('err', err.response.data)
         store.commit('error', err.response.data)
       })
     },
     REGISTER: function (commit, data) {
-      axios.post(`${SERVER_URL}signup`, {
-        email: data.phone,
-        password1: data.full_name,
-        password2: data.full_name
-      }).then((response) => {
+      axios.post(`${SERVER_URL}api/users/`, {
+        mobile_phone: data.phone,
+        password: data.phone.split('-')[1],
+        country: {name: 'india'},
+        first_name: data.first_name,
+        last_name: data.last_name
+      }, { headers: { 'Content-Type': 'application/json' } }
+      ).then((response) => {
         store.commit('success', response.data)
         localStorage.setItem('token', response.data.token)
+        router.push({name: 'login'})
       }).catch((err) => {
         store.commit('error', err.response.data)
       })
