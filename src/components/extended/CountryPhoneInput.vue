@@ -39,6 +39,7 @@
       autocomplete="off"
       v-bind:name="name"
       v-model="phone.number"
+      v-bind:class="{'input-danger': phoneErrors}"
     />
   </div>
 </template>
@@ -58,7 +59,8 @@
     },
     props: {
       defaultCode: {type: String, default: 'in'},
-      editable: {type: Boolean, default: false}
+      editable: {type: Boolean, default: false},
+      phoneErrors: String
     },
     methods: {
       handleChangePhoneNumber (event) {
@@ -74,40 +76,45 @@
   }
 </script>
 
-<style scoped>
-  .intl-phone-input.allow-dropdown input.input-text {
-    height: 53px;
-    padding-left: 46px;
-    line-height: 1em;
-    transition: box-shadow 0.2s;
-    text-transform: none;
-    outline: none;
-    font-size: 15px;
-    margin-top: 8px !important;
-    box-sizing: border-box;
-    display: block;
-    background-color: #fcfcfc;
-    font-weight: 500;
-    border: 1px solid #e0e0e0;
-    opacity: 1;
-    border-radius: 3px;
-    color: black;
-    box-shadow: none;
-  }
-  .intl-phone-input.allow-dropdown input.input-text:focus {
-    transition: box-shadow 0.2s !important;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.07);
-  }
+<style lang="scss" scoped>
   .intl-phone-input {
     width:100%;
+    &.allow-dropdown input.input-text {
+      &:focus {
+        transition: box-shadow 0.2s !important;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.07);
+      }
+      height: 53px;
+      padding-left: 46px;
+      line-height: 1em;
+      transition: box-shadow 0.2s;
+      text-transform: none;
+      outline: none;
+      font-size: 15px;
+      margin-top: 8px !important;
+      box-sizing: border-box;
+      display: block;
+      background-color: #fcfcfc;
+      font-weight: 500;
+      border: 1px solid #e0e0e0;
+      opacity: 1;
+      border-radius: 3px;
+      color: black;
+      box-shadow: none;
+    }
+    &.allow-dropdown input.input-danger {
+      border: 1px solid red;
+    }
   }
   div.flag-container {
     top: 8px;
   }
-  >>> div.iti-flag {
-    left: 12px;
-  }
-  >>> div.iti-arrow {
-    left: 35px;
+  >>> div {
+    &.iti-flag {
+       left: 12px;
+    }
+    &iti-arrow {
+       left: 35px;
+    }
   }
 </style>

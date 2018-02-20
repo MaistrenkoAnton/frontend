@@ -3,10 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuex from 'vuex'
+import store from './store'
 
 import VueSVGIcon from 'vue-svgicon'
 
 Vue.use(VueSVGIcon)
+Vue.use(Vuex)
 
 Vue.config.productionTip = false
 
@@ -19,6 +22,7 @@ Vue.directive('focus', {
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
