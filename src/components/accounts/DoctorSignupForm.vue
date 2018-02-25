@@ -5,7 +5,6 @@
     <form class="login">
 
       <p class="non-field-error" v-if="nonFieldErrors">{{ nonFieldErrors }}</p>
-
       <p class="form-row form-row-wide">
         <label for="phone">
           <country-phone-input :phone="phone" :phoneErrors="phoneErrors"></country-phone-input>

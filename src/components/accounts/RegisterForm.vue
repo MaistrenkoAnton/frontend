@@ -1,9 +1,7 @@
 <template>
   <div class="tab-content" id="tab2">
     <form class="register">
-
       <p class="non-field-error" v-if="nonFieldErrors">{{ nonFieldErrors }}</p>
-
       <p class="form-row form-row-wide">
           <label for="phone">
             <country-phone-input :phone="phone" :phoneErrors="phoneErrors"></country-phone-input>
@@ -50,7 +48,13 @@ export default {
   methods: {
     register () {
       this.$store.dispatch('CLEAR_ERRORS')
-      this.$store.dispatch('REGISTER', {phone: this.phone.number, first_name: this.getFirstName(), last_name: this.getLastName()})
+      this.$store.dispatch('REGISTER',
+        {
+          phone: this.phone.number,
+          first_name: this.getFirstName(),
+          last_name: this.getLastName(),
+          callback: this.$toast.top
+        })
     },
     getFirstName () {
       return this.full_name.split(' ')[0]
