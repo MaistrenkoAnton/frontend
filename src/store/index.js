@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import router from '../router/index.js'
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -22,21 +22,26 @@ const store = new Vuex.Store({
       ).then((response) => {
         store.commit('success', response)
         localStorage.setItem('token', response.data.token)
+        data.callback('Login is successful')
+        router.push({name: 'login'})
       }).catch((err) => {
         store.commit('error', err.response.data)
       })
     },
     REGISTER: function (commit, data) {
-      axios.post(`${SERVER_URL}api/users/`, {
-        mobile_phone: data.phone,
-        password: data.phone.split('-')[1],
-        country: {name: 'india'},
-        first_name: data.first_name,
-        last_name: data.last_name
+      axios.post(`${SERVER_URL}api/patients/`, {
+        user: {
+          mobile_phone: data.phone,
+          password: data.phone.split('-')[1],
+          country: {name: 'india'},
+          first_name: data.first_name,
+          last_name: data.last_name
+        }
       }, { headers: { 'Content-Type': 'application/json' } }
       ).then((response) => {
         store.commit('success', response.data)
         localStorage.setItem('token', response.data.token)
+        data.callback('Patient is successfully registered')
         router.push({name: 'login'})
       }).catch((err) => {
         store.commit('error', err.response.data)
@@ -63,7 +68,7 @@ const store = new Vuex.Store({
       state.responseState.success = data
     },
     error (state, data) {
-      state.responseState.errors = data
+      state.responseState.errors = data.user || data
     },
     clear_errors (state) {
       state.responseState.errors = null

@@ -51,7 +51,13 @@ export default {
   methods: {
     login () {
       this.$store.dispatch('CLEAR_ERRORS')
-      this.$store.dispatch('LOGIN', {phone: this.phone.number, password: this.password})
+      this.$store.dispatch('LOGIN',
+        {
+          phone: this.phone.number,
+          password: this.password,
+          callback: this.$toast.top
+        }
+      )
     }
   },
   created () {
