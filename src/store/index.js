@@ -48,13 +48,20 @@ const store = new Vuex.Store({
       })
     },
     DOCTOR_SIGNUP: function (commit, data) {
-      axios.post(`${SERVER_URL}signup`, {
-        email: data.phone,
-        password1: data.full_name,
-        password2: data.full_name
-      }).then((response) => {
+      axios.post(`${SERVER_URL}api/doctors/`, {
+        user: {
+          mobile_phone: data.phone,
+          password: data.phone.split('-')[1],
+          country: {name: 'india'},
+          first_name: data.first_name,
+          last_name: data.last_name
+        }
+      }, { headers: { 'Content-Type': 'application/json' } }
+      ).then((response) => {
         store.commit('success', response.data)
         localStorage.setItem('token', response.data.token)
+        data.callback('Doctor is successfully registered')
+        router.push({name: 'login'})
       }).catch((err) => {
         store.commit('error', err.response.data)
       })

@@ -78,7 +78,7 @@ module.exports = {
       {
         test: /\.css$/,
         include: [
-          path.resolve(__dirname, "not_exist_path")
+          path.resolve(__dirname, "")
         ],
         loader: "style!css"
       },

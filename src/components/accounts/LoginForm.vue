@@ -15,7 +15,7 @@
         <label for="password">
           <i class="fa fa-lock"></i>
           <input class="input-text" type="password" name="password" placeholder ="Password"
-                 id="password" v-model="password" v-bind:class="{'danger': passwordErrors}">
+                 id="password" v-model="password" v-bind:class="{'danger': passwordErrors}" @keyup.enter="login">
         </label>
       </p>
       <div v-bind:class="{'errors': passwordErrors}">{{ passwordErrors }}</div>

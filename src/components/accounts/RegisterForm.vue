@@ -13,7 +13,7 @@
         <label for="username2">
           <i class="fa fa-user" aria-hidden="true"></i>
           <input type="text" class="input-text" name="username" placeholder="Full Name"
-                 id="username2" v-model="full_name">
+                 id="username2" v-model="full_name" @keyup.enter="register">
         </label>
       </p>
 
