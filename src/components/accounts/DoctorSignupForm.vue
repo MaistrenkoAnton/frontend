@@ -16,9 +16,11 @@
         <label for="username2">
           <div class="doctor-prefix">Dr.</div>
           <input type="text" class="input-text" name="username" placeholder="Full Name" id="username2"
-          v-model="full_name" @keyup.enter="doctor_signup">
+          v-model="full_name" @keyup.enter="doctor_signup"
+          v-bind:class="{'danger': fullNameErrors}">
         </label>
       </p>
+      <div class="errors" v-if="fullNameErrors">{{ fullNameErrors }}</div>
 
       <p class="form-row">
         <input type="button" class="button border margin-top-10" name="login" value="Register"
@@ -77,6 +79,14 @@ export default {
       if (this.$store.getters.getErrors && this.$store.getters.getErrors.mobile_phone) {
         return this.$store.getters.getErrors.mobile_phone.join('\n')
       }
+    },
+    fullNameErrors () {
+      if (this.$store.getters.getErrors && this.$store.getters.getErrors.first_name) {
+        return this.$store.getters.getErrors.first_name.join('\n')
+      }
+      if (this.$store.getters.getErrors && this.$store.getters.getErrors.last_name) {
+        return this.$store.getters.getErrors.last_name.join('\n')
+      }
     }
   }
 }
@@ -86,7 +96,8 @@ export default {
   .doctor-prefix {
     position: absolute;
     color: black;
-    top: 13px;
-    left: 15px;
+    top: 50%;
+    left: 13px;
+    transform: translateY(-50%);
   }
 </style>

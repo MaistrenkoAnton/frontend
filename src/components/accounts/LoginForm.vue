@@ -18,7 +18,7 @@
                  id="password" v-model="password" v-bind:class="{'danger': passwordErrors}" @keyup.enter="login">
         </label>
       </p>
-      <div v-bind:class="{'errors': passwordErrors}">{{ passwordErrors }}</div>
+      <div div class="errors" v-if="passwordErrors">{{ passwordErrors }}</div>
 
       <p class="form-row">
         <input type="button" class="button border margin-top-10" name="login" value="Login"

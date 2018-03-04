@@ -13,9 +13,11 @@
         <label for="username2">
           <i class="fa fa-user" aria-hidden="true"></i>
           <input type="text" class="input-text" name="username" placeholder="Full Name"
-                 id="username2" v-model="full_name" @keyup.enter="register">
+                 id="username2" v-model="full_name" @keyup.enter="register"
+                 v-bind:class="{'danger': fullNameErrors}">
         </label>
       </p>
+      <div class="errors" v-if="fullNameErrors">{{ fullNameErrors }}</div>
 
       <p class="form-row">
         <input type="button" class="button border fw margin-top-10" name="register" value="Register"
@@ -75,6 +77,14 @@ export default {
     phoneErrors () {
       if (this.$store.getters.getErrors && this.$store.getters.getErrors.mobile_phone) {
         return this.$store.getters.getErrors.mobile_phone.join('\n')
+      }
+    },
+    fullNameErrors () {
+      if (this.$store.getters.getErrors && this.$store.getters.getErrors.first_name) {
+        return this.$store.getters.getErrors.first_name.join('\n')
+      }
+      if (this.$store.getters.getErrors && this.$store.getters.getErrors.last_name) {
+        return this.$store.getters.getErrors.last_name.join('\n')
       }
     }
   }
